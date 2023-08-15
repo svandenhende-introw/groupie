@@ -83,10 +83,12 @@ const getFavouriteGroup = (props: {
     (s) => s.group === props.after
   );
 
-  return sortedScores.slice(
-    Math.min(indexOfAfterGroup + 1, sortedScores.length - 1),
-    undefined
-  )[0];
+  const sliceIdx =
+    indexOfAfterGroup + 1 === sortedScores.length - 1
+      ? 0
+      : indexOfAfterGroup + 1;
+
+  return sortedScores.slice(sliceIdx, undefined)[0];
 };
 
 const assignFavourites = () => {
