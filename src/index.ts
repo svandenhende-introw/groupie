@@ -62,13 +62,10 @@ interface ScorePerGroup {
 
 const data: Map<string, ScorePerGroup[]> = new Map(Object.entries(jsonData));
 
-// Init result based on all groups in the json
+// Init result based on all groups
 const result = new Map<Group, Leiding[]>();
-for (const [_, scores] of data) {
-  for (const score of scores) {
-    result.set(score.group, []);
-  }
-  break;
+for (const group of Object.values(groups.Values)) {
+  result.set(group, []);
 }
 
 const sortScoresFn = (x: ScorePerGroup, y: ScorePerGroup) => {
