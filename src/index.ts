@@ -1,28 +1,74 @@
 import * as fs from "fs";
+import * as z from "zod";
 
 const MAX_LEIDING_PER_GROUP = 2;
 const MAX_ITERATIONS = 100;
 let c = 0;
 
-// TODO: Complete lists
-type Group = "Sloebers" | "Ketis" | "Aspis";
-type Leiding = "Amber" | "Eli" | "Rube" | "Renee" | "Floor" | "Gaelle";
+const groups = z.enum([
+  "Sloebers",
+  "Speelclub kongens",
+  "Speelclub meisjes",
+  "Rakkers",
+  "Kwils",
+  "Tito's",
+  "Keti's",
+  "Aspi's",
+]);
+
+const people = z.enum([
+  "Evi",
+  "Floor",
+  "Renee",
+  "Sander",
+  "Boelens",
+  "Amber",
+  "Denzel",
+  "Eli",
+  "Mouton",
+  "Verkindere",
+  "Gaelle",
+  "Kyandro",
+  "Lars",
+  "Margaux",
+  "Mathijs",
+  "Maxime",
+  "Robbe",
+  "Rube",
+  "Yoran",
+]);
+
+const jsonSchema = z.record(
+  people,
+  z.array(
+    z.object({
+      group: groups,
+      score: z.number().min(0).max(100),
+    })
+  )
+);
+
+const jsonData = JSON.parse(fs.readFileSync("./src/assets/data.json", "utf-8"));
+jsonSchema.parse(jsonData);
+
+type Group = z.infer<typeof groups>;
+type Leiding = z.infer<typeof people>;
 
 interface Score {
   group: Group;
   score: number;
 }
 
-const data: Map<string, Score[]> = new Map(
-  Object.entries(JSON.parse(fs.readFileSync("./src/assets/data.json", "utf-8")))
-);
+const data: Map<string, Score[]> = new Map(Object.entries(jsonData));
 
-// Init result
-const result = new Map<Group, Leiding[]>([
-  ["Sloebers", []],
-  ["Ketis", []],
-  ["Aspis", []],
-]);
+// Init result based on all groups in the json
+const result = new Map<Group, Leiding[]>();
+for (const [_, scores] of data) {
+  for (const score of scores) {
+    result.set(score.group, []);
+  }
+  break;
+}
 
 const sortScoresFn = (x: Score, y: Score) => {
   if (x.score > y.score) return -1;

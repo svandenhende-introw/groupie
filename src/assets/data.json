@@ -1,32 +1,32 @@
 {
   "Amber": [
     { "group": "Sloebers", "score": 99 },
-    { "group": "Ketis", "score": 20 },
-    { "group": "Aspis", "score": 100 }
+    { "group": "Keti's", "score": 20 },
+    { "group": "Aspi's", "score": 100 }
   ],
   "Eli": [
     { "group": "Sloebers", "score": 10 },
-    { "group": "Ketis", "score": 90 },
-    { "group": "Aspis", "score": 100 }
+    { "group": "Keti's", "score": 90 },
+    { "group": "Aspi's", "score": 100 }
   ],
   "Rube": [
     { "group": "Sloebers", "score": 10 },
-    { "group": "Ketis", "score": 30 },
-    { "group": "Aspis", "score": 100 }
+    { "group": "Keti's", "score": 30 },
+    { "group": "Aspi's", "score": 100 }
   ],
   "Renee": [
     { "group": "Sloebers", "score": 80 },
-    { "group": "Ketis", "score": 40 },
-    { "group": "Aspis", "score": 100 }
+    { "group": "Keti's", "score": 40 },
+    { "group": "Aspi's", "score": 100 }
   ],
   "Floor": [
     { "group": "Sloebers", "score": 80 },
-    { "group": "Ketis", "score": 90 },
-    { "group": "Aspis", "score": 30 }
+    { "group": "Keti's", "score": 90 },
+    { "group": "Aspi's", "score": 30 }
   ],
   "Gaelle": [
     { "group": "Sloebers", "score": 20 },
-    { "group": "Ketis", "score": 90 },
-    { "group": "Aspis", "score": 100 }
+    { "group": "Keti's", "score": 90 },
+    { "group": "Aspi's", "score": 100 }
   ]
 }
