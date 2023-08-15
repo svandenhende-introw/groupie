@@ -7,7 +7,7 @@ let c = 0;
 
 const groups = z.enum([
   "Sloebers",
-  "Speelclub kongens",
+  "Speelclub jongens",
   "Speelclub meisjes",
   "Rakkers",
   "Kwils",
