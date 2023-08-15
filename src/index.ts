@@ -54,12 +54,12 @@ jsonSchema.parse(jsonData);
 type Group = z.infer<typeof groups>;
 type Leiding = z.infer<typeof people>;
 
-interface Score {
+interface ScorePerGroup {
   group: Group;
   score: number;
 }
 
-const data: Map<string, Score[]> = new Map(Object.entries(jsonData));
+const data: Map<string, ScorePerGroup[]> = new Map(Object.entries(jsonData));
 
 // Init result based on all groups in the json
 const result = new Map<Group, Leiding[]>();
@@ -70,16 +70,16 @@ for (const [_, scores] of data) {
   break;
 }
 
-const sortScoresFn = (x: Score, y: Score) => {
+const sortScoresFn = (x: ScorePerGroup, y: ScorePerGroup) => {
   if (x.score > y.score) return -1;
   if (x.score < y.score) return 1;
   return 0;
 };
 
 const getFavouriteGroup = (props: {
-  scores: Score[];
+  scores: ScorePerGroup[];
   after: Group | null;
-}): Score => {
+}): ScorePerGroup => {
   const sortedScores = props.scores.sort(sortScoresFn);
   const indexOfAfterGroup = sortedScores.findIndex(
     (s) => s.group === props.after
