@@ -105,7 +105,9 @@ const renderData = () => {
     console.log(`\n${leiding}`);
     for (const score of scores.sort(sortScoresFn)) {
       console.log(
-        `  -> ${score.score.toString().padStart(3, " ")} | ${score.group}`
+        `  -> ${score.score
+          .toString()
+          .padStart(3, " ")}% zin om leiding te geven aan de ${score.group}`
       );
     }
   }
