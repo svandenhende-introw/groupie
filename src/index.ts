@@ -43,6 +43,7 @@ const jsonSchema = z.record(
   z.array(
     z.object({
       group: groups,
+      // Score of 0-100 indicating how much a person would like to lead a certain group
       score: z.number().min(0).max(100),
     })
   )
