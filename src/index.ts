@@ -1,3 +1,5 @@
+import * as fs from "fs";
+
 const MAX_LEIDING_PER_GROUP = 2;
 const MAX_ITERATIONS = 100;
 let c = 0;
@@ -11,44 +13,9 @@ interface Score {
   score: number;
 }
 
-const data = new Map<Leiding, Score[]>();
-
-// TODO: Load actual data from some source / enter correctly from submission
-data.set("Amber", [
-  { group: "Sloebers", score: 99 },
-  { group: "Ketis", score: 20 },
-  { group: "Aspis", score: 100 },
-]);
-
-data.set("Eli", [
-  { group: "Sloebers", score: 10 },
-  { group: "Ketis", score: 90 },
-  { group: "Aspis", score: 100 },
-]);
-
-data.set("Rube", [
-  { group: "Sloebers", score: 10 },
-  { group: "Ketis", score: 30 },
-  { group: "Aspis", score: 100 },
-]);
-
-data.set("Renee", [
-  { group: "Sloebers", score: 80 },
-  { group: "Ketis", score: 40 },
-  { group: "Aspis", score: 100 },
-]);
-
-data.set("Floor", [
-  { group: "Sloebers", score: 80 },
-  { group: "Ketis", score: 90 },
-  { group: "Aspis", score: 30 },
-]);
-
-data.set("Gaelle", [
-  { group: "Sloebers", score: 20 },
-  { group: "Ketis", score: 90 },
-  { group: "Aspis", score: 100 },
-]);
+const data: Map<string, Score[]> = new Map(
+  Object.entries(JSON.parse(fs.readFileSync("./src/assets/data.json", "utf-8")))
+);
 
 // Init result
 const result = new Map<Group, Leiding[]>([
@@ -78,7 +45,7 @@ const getFavouriteGroup = (props: {
 const assignFavourites = () => {
   for (const [leiding, scores] of data) {
     const favo = getFavouriteGroup({ scores, after: null });
-    result.set(favo.group, result.get(favo.group)!.concat(leiding));
+    result.set(favo.group, result.get(favo.group)!.concat(leiding as Leiding));
   }
 };
 
