@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as z from "zod";
 
-const MAX_LEIDING_PER_GROUP = 2;
+const IDEAL_LEIDING_PER_GROUP = 2;
 const MAX_ITERATIONS = 100;
 let c = 0;
 
@@ -121,9 +121,13 @@ const renderResult = () => {
       c + 1
     } ------------------------------`
   );
+
+  let hasIncompleteGroup = false;
   for (const [group, leiding] of result) {
     console.log(`\n${group}`);
     if (!leiding.length) console.log("  -> Niemand");
+    if (leiding.length < IDEAL_LEIDING_PER_GROUP) hasIncompleteGroup = true;
+
     for (const leidingMember of leiding) {
       const groupScore = data
         .get(leidingMember)!
@@ -145,6 +149,15 @@ const renderResult = () => {
       );
     }
   }
+
+  if (!hasIncompleteGroup) {
+    console.log(
+      "\n🎉 Found solution where all groups have a sufficient amount of leiders"
+    );
+    c = MAX_ITERATIONS;
+    return;
+  }
+
   console.log(
     `\n------------------------------ Iteratie ${
       c + 1
@@ -158,13 +171,10 @@ const improve = (): undefined => {
 
   // Ensure overflow is caught
   c += 1;
-  if (c == MAX_ITERATIONS) {
-    console.log("  >> Gestopt door maximaal aantal iteraties");
-    return;
-  }
+  if (c >= MAX_ITERATIONS) return;
 
   for (const [group, leiding] of result) {
-    if (leiding.length > MAX_LEIDING_PER_GROUP) {
+    if (leiding.length > IDEAL_LEIDING_PER_GROUP) {
       // too many people want this group => Move some
       console.log(
         `\nTe veel mensen willen leiding geven aan de ${group} (${leiding.length})`
@@ -188,7 +198,7 @@ const improve = (): undefined => {
 
       // move those with the highest next choice
       leidingSortedBasedOnNextChoice
-        .slice(0, -MAX_LEIDING_PER_GROUP)
+        .slice(0, -IDEAL_LEIDING_PER_GROUP)
         .forEach((l) => {
           const nextGroup = getFavouriteGroup({
             scores: data.get(l)!,
@@ -204,7 +214,7 @@ const improve = (): undefined => {
       // keep n with lowest next choice
       result.set(
         group,
-        leidingSortedBasedOnNextChoice.slice(-MAX_LEIDING_PER_GROUP)
+        leidingSortedBasedOnNextChoice.slice(-IDEAL_LEIDING_PER_GROUP)
       );
 
       // check if further improvement is required
