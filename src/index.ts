@@ -123,6 +123,9 @@ const renderData = () => {
   }
 };
 
+let mostAmountOfLeiding: number = -1;
+let groupWithMostLeiding: Group | null = null;
+
 const renderResult = () => {
   console.log(
     `\n------------------------------ Iteratie ${
@@ -137,6 +140,10 @@ const renderResult = () => {
 
   let hasIncompleteGroup = false;
   let i = 0;
+
+  mostAmountOfLeiding = -1;
+  groupWithMostLeiding = null;
+
   for (const [group, leiding] of result) {
     console.log(`\n${group}`);
 
@@ -146,6 +153,13 @@ const renderResult = () => {
 
     if (!leiding.length) console.log("  -> Niemand");
     if (leiding.length < IDEAL_LEIDING_PER_GROUP) hasIncompleteGroup = true;
+    if (
+      leiding.length > IDEAL_LEIDING_PER_GROUP &&
+      leiding.length > mostAmountOfLeiding
+    ) {
+      mostAmountOfLeiding = leiding.length;
+      groupWithMostLeiding = group;
+    }
 
     let j = 0;
     for (const leidingMember of leiding) {
@@ -246,55 +260,57 @@ const improve = (): undefined => {
   c += 1;
   if (c >= MAX_ITERATIONS) return;
 
-  for (const [group, leiding] of result) {
-    if (leiding.length > IDEAL_LEIDING_PER_GROUP) {
-      // too many people want this group => Move some
-      console.log(
-        `\nTe veel mensen willen leiding geven aan de ${group} (${leiding.length})`
-      );
-      movedFromGroup = group;
+  if (groupWithMostLeiding) {
+    // Get group with too many leiding
+    const group = groupWithMostLeiding;
+    const leiding = result.get(groupWithMostLeiding)!;
 
-      // decide who to move based on their next choice
-      const leidingSortedBasedOnNextChoice = leiding.sort((x, y) => {
-        const xScoreForNextGroup = getFavouriteGroup({
-          scores: data.get(x)!,
-          after: group,
-        }).score;
-        const yScoreForNextGroup = getFavouriteGroup({
-          scores: data.get(y)!,
-          after: group,
-        }).score;
+    // too many people want this group => Move some
+    console.log(
+      `\nTe veel mensen willen leiding geven aan de ${group} (${leiding.length})`
+    );
+    movedFromGroup = group;
 
-        if (xScoreForNextGroup > yScoreForNextGroup) return -1;
-        if (xScoreForNextGroup < yScoreForNextGroup) return 1;
-        return 0;
+    // decide who to move based on their next choice
+    const leidingSortedBasedOnNextChoice = leiding.sort((x, y) => {
+      const xScoreForNextGroup = getFavouriteGroup({
+        scores: data.get(x)!,
+        after: group,
+      }).score;
+      const yScoreForNextGroup = getFavouriteGroup({
+        scores: data.get(y)!,
+        after: group,
+      }).score;
+
+      if (xScoreForNextGroup > yScoreForNextGroup) return -1;
+      if (xScoreForNextGroup < yScoreForNextGroup) return 1;
+      return 0;
+    });
+
+    // move those with the highest next choice
+    leidingSortedBasedOnNextChoice
+      .slice(0, -IDEAL_LEIDING_PER_GROUP)
+      .forEach((l) => {
+        const nextGroup = getFavouriteGroup({
+          scores: data.get(l)!,
+          after: group,
+        });
+        movedLeiding.push(l);
+        console.log(
+          ` > ${l} wordt verhuisd naar de volgende keuze ${nextGroup.group} met score ${nextGroup.score}`
+        );
+
+        result.set(nextGroup.group, result.get(nextGroup.group)!.concat(l));
       });
 
-      // move those with the highest next choice
-      leidingSortedBasedOnNextChoice
-        .slice(0, -IDEAL_LEIDING_PER_GROUP)
-        .forEach((l) => {
-          const nextGroup = getFavouriteGroup({
-            scores: data.get(l)!,
-            after: group,
-          });
-          movedLeiding.push(l);
-          console.log(
-            ` > ${l} wordt verhuisd naar de volgende keuze ${nextGroup.group} met score ${nextGroup.score}`
-          );
+    // keep n with lowest next choice
+    result.set(
+      group,
+      leidingSortedBasedOnNextChoice.slice(-IDEAL_LEIDING_PER_GROUP)
+    );
 
-          result.set(nextGroup.group, result.get(nextGroup.group)!.concat(l));
-        });
-
-      // keep n with lowest next choice
-      result.set(
-        group,
-        leidingSortedBasedOnNextChoice.slice(-IDEAL_LEIDING_PER_GROUP)
-      );
-
-      // check if further improvement is required
-      return improve();
-    }
+    // check if further improvement is required
+    return improve();
   }
 
   console.log("Optimale oplossing gevonden 🎉");
