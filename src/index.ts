@@ -2,7 +2,12 @@ import * as fs from "fs";
 import * as z from "zod";
 const PImage = require("pureimage");
 
-import { drawLine, drawText, drawTextWithBackground } from "./drawing";
+import {
+  drawLine,
+  drawRect,
+  drawText,
+  drawTextWithBackground,
+} from "./drawing";
 
 const IDEAL_LEIDING_PER_GROUP = 2;
 const MAX_ITERATIONS = 100;
@@ -135,9 +140,9 @@ const renderResult = () => {
   for (const [group, leiding] of result) {
     console.log(`\n${group}`);
 
-    drawLine(ctx, (1920 / 8) * i, 0, (1920 / 8) * i, 540);
-    drawText(ctx, group, 20, (1920 / 8) * i + 1920 / 8 / 2, 48);
-    drawLine(ctx, 0, 88, 1920, 88);
+    if (movedFromGroup === group) {
+      drawRect(ctx, "lightgreen", (1920 / 8) * i, 0, 1920 / 8, 540, 0);
+    }
 
     if (!leiding.length) console.log("  -> Niemand");
     if (leiding.length < IDEAL_LEIDING_PER_GROUP) hasIncompleteGroup = true;
@@ -163,6 +168,18 @@ const renderResult = () => {
         })`
       );
 
+      if (movedLeiding.includes(leidingMember)) {
+        drawRect(
+          ctx,
+          "lightcoral",
+          (1920 / 8) * i,
+          140 + j * 64 - 24,
+          1920 / 8,
+          16 + 24 + 24,
+          0
+        );
+      }
+
       drawText(
         ctx,
         `${leidingMember}`,
@@ -184,6 +201,9 @@ const renderResult = () => {
       j++;
     }
 
+    drawLine(ctx, (1920 / 8) * i, 0, (1920 / 8) * i, 540);
+    drawText(ctx, group, 20, (1920 / 8) * i + 1920 / 8 / 2, 48);
+    drawLine(ctx, 0, 88, 1920, 88);
     i++;
   }
 
@@ -213,9 +233,14 @@ const renderResult = () => {
   );
 };
 
+let movedLeiding: Leiding[] = [];
+let movedFromGroup = "";
+
 const improve = (): undefined => {
   // Render intermediate result
   renderResult();
+
+  movedLeiding = [];
 
   // Ensure overflow is caught
   c += 1;
@@ -227,6 +252,7 @@ const improve = (): undefined => {
       console.log(
         `\nTe veel mensen willen leiding geven aan de ${group} (${leiding.length})`
       );
+      movedFromGroup = group;
 
       // decide who to move based on their next choice
       const leidingSortedBasedOnNextChoice = leiding.sort((x, y) => {
@@ -252,6 +278,7 @@ const improve = (): undefined => {
             scores: data.get(l)!,
             after: group,
           });
+          movedLeiding.push(l);
           console.log(
             ` > ${l} wordt verhuisd naar de volgende keuze ${nextGroup.group} met score ${nextGroup.score}`
           );

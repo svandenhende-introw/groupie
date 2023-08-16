@@ -35,7 +35,8 @@ export const drawText = (
   size: number,
   x: number,
   y: number,
-  align?: string
+  align?: string,
+  color?: string
 ) => {
   const fnt = PImage.registerFont(
     "./src/assets/fonts/Nunito-Regular.ttf",
@@ -44,7 +45,7 @@ export const drawText = (
   fnt.loadSync();
 
   ctx.textAlign = align || "center";
-  ctx.fillStyle = "#111111";
+  ctx.fillStyle = color ?? "#111111";
   ctx.font = `${size} Nunito`;
   ctx.fillText(text, x, y);
 };
@@ -74,4 +75,17 @@ export const drawTextWithBackground = (
   );
 
   drawText(ctx, text, size, x, y, align);
+};
+
+export const drawRect = (
+  ctx: any,
+  color: string,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number
+) => {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, w, h, r);
 };
