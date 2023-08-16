@@ -1,5 +1,8 @@
 import * as fs from "fs";
 import * as z from "zod";
+const PImage = require("pureimage");
+
+import { drawLine, drawText, drawTextWithBackground } from "./drawing";
 
 const IDEAL_LEIDING_PER_GROUP = 2;
 const MAX_ITERATIONS = 100;
@@ -122,12 +125,24 @@ const renderResult = () => {
     } ------------------------------`
   );
 
+  const img = PImage.make(1920, 540);
+  const ctx = img.getContext("2d");
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, 1920, 540);
+
   let hasIncompleteGroup = false;
+  let i = 0;
   for (const [group, leiding] of result) {
     console.log(`\n${group}`);
+
+    drawLine(ctx, (1920 / 8) * i, 0, (1920 / 8) * i, 540);
+    drawText(ctx, group, 20, (1920 / 8) * i + 1920 / 8 / 2, 48);
+    drawLine(ctx, 0, 88, 1920, 88);
+
     if (!leiding.length) console.log("  -> Niemand");
     if (leiding.length < IDEAL_LEIDING_PER_GROUP) hasIncompleteGroup = true;
 
+    let j = 0;
     for (const leidingMember of leiding) {
       const groupScore = data
         .get(leidingMember)!
@@ -147,8 +162,41 @@ const renderResult = () => {
           choiceNumber + 1
         })`
       );
+
+      drawText(
+        ctx,
+        `${leidingMember}`,
+        16,
+        (1920 / 8) * i + 32,
+        140 + j * 64,
+        "start"
+      );
+
+      drawText(
+        ctx,
+        ` -> (score: ${groupScore}, keuze: ${choiceNumber + 1})`,
+        16,
+        (1920 / 8) * i + 32,
+        140 + (j + 1) * 64 - 42,
+        "start"
+      );
+
+      j++;
     }
+
+    i++;
   }
+
+  drawTextWithBackground(ctx, `Iteratie ${c + 1}`, 14, 32, 540 - 32, "start");
+
+  PImage.encodePNGToStream(img, fs.createWriteStream(`Iteratie_${c + 1}.png`))
+    .then(() => {
+      console.log("wrote out the png file to out.png");
+    })
+    .catch((e: any) => {
+      console.log("there was an error writing");
+      console.log(e);
+    });
 
   if (!hasIncompleteGroup) {
     console.log(
