@@ -31,3 +31,37 @@ Indien je sommige groepen wel ziet zitten kan je dit aangeven door een lagere sc
 Als laatst kan je ook aangeven welke groepen je totaal niet ziet zitten, deze zou je eerder richting de 0% scoren. Zo kan je het bv maar 5% zien zitten om leiding te geven aan de Sloebers of de Rakkers.
 
 Deze manier van scoring laat je toe om **nuances** aan te geven over de verschillende groepen. Het schetst een beter beeld over hoe tevreden je bent met je 2e of 3e keuze, waardoor het programma een betere inschatting kan maken over het geven van je 1e, 2e, of 3e keuze.
+
+## In actie
+
+Hieronder volgt een voorbeeld van het programma op willekeurige data. (Nieuwe leiding kan inderdaad geen leiding geven aan Aspi's, de score-bepaling is compleet random en illustratief)
+
+### Stap 1: Iedereen wordt bij zijn eerste keuze gezet
+
+![Iteratie 1](./example/Iteratie_1.png)
+
+### Stap 2: Te veel leiding bij de Speelclub jongens
+
+Het programma detecteerde hier te veel personen. Er wordt gekeken naar de score van de volgende keuze van elke persoon. De personen met de hoogst scorende 2e keuze worden naar hun 2e keuze verplaatst. De personen die teveel score-punten zouden moeten inboeten worden behouden.
+
+![Iteratie 2](./example/Iteratie_2.png)
+
+## Te veel leiding bij de Tito's
+
+Het programma detecteerde hier te veel personen. Er wordt opnieuw gekeken naar de volgende keuze van elke persoon die momenteel aan deze groep hangt. De personen met de beste volgende keuze worden naar hun volgende keuze verplaatst.
+
+> Hier zie je opnieuw duidelijk dat mensen die het minder erg vinden om hun 2e keuze te krijgen, deze rapper zullen krijgen dan mensen die minder graag hun 2e keuze willen
+
+![Iteratie 3](./example/Iteratie_3.png)
+
+### Te veel leiding bij de Rakkers
+
+Opnieuw worden de mensen met de laagste scores voor hun volgende keuze behouden bij de Rakkers. De mensen met een relatief hoge score voor hun volgende keuze worden aan hun volgende keuze toegewezen.
+
+![Iteratie 4](./example/Iteratie_4.png)
+
+## Te veel leiding bij de Keti's
+
+Hier zien we dat we iemand hebben gevonden die bij de Kwils wilt staan, waardoor elke groep minstens 2 leiders heeft. Deze staat is optimaal aangezien er zo min mogelijk vershuivingen zijn gebeurd sinds het begin (ideale situatie voor iedereen (iedereen zijn keuze met de hoogste score)). Elke groep die momenteel met meer dan 2 leiders staat kan nog eens kijken welke personen eventueel nog willen wisselen met andere groepen, of welke groepen meer deugd zouden hebben van een 3e persoon.
+
+![Iteratie 5](./example/Iteratie_5.png)
