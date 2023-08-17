@@ -42,7 +42,7 @@ Hieronder volgt een voorbeeld van het programma op willekeurige data. (Nieuwe le
 
 ### Stap 2: Te veel leiding bij de Speelclub jongens
 
-Het programma detecteerde hier te veel personen. Er wordt gekeken naar de score van de volgende keuze van elke persoon. De personen met de hoogst scorende 2e keuze worden naar hun 2e keuze verplaatst. De personen die teveel score-punten zouden moeten inboeten worden behouden.
+Het programma detecteerde hier te veel personen. Er wordt gekeken naar de score van de volgende keuze van elke persoon. De personen met de hoogst scorende 2e keuze worden naar hun 2e keuze verplaatst. De personen die te veel score-punten zouden moeten inboeten worden behouden. Hier zie je dat Lars verplaatst wordt naar zijn 2e keuze (de tito's). Desondanks heeft deze keuze nog steeds een score van 95%. Dit terwijl Sanders slechts een score heeft van 85% voro zijn eerste keuze. Hier zie je duidelijk dat Lars het minder erg vind om zijn 2e keuze te krijgen dan Sander. Dit zorgt er voor dat we Lars vergooien van groep en Sander niet.
 
 ![Iteratie 2](./example/Iteratie_2.png)
 
