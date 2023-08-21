@@ -19,7 +19,8 @@ const groups = z.enum([
   "Speelclub meisjes",
   "Rakkers",
   "Kwiks",
-  "Tito's",
+  "Tippers",
+  "Toppers",
   "Keti's",
   "Aspi's",
 ]);

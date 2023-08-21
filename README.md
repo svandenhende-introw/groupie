@@ -26,7 +26,7 @@ Deze nuances zijn in een klassiek top-3 model onmogelijk te achterhalen. Dit hee
 
 Indien je heel graag een bepaalde groep wilt begeleiden geef je deze een score dicht tegen de 100%. Indien je ook een andere groep graag zou begeleiden, kan je deze eveneens een hoge score geven.
 
-Indien je sommige groepen wel ziet zitten kan je dit aangeven door een lagere score te geven, zo kan je het bv 70% zien zitten om leiding te geven aan de keti's en slechts 45% zien zitten om leiding te geven aan de tito's.
+Indien je sommige groepen wel ziet zitten kan je dit aangeven door een lagere score te geven, zo kan je het bv 70% zien zitten om leiding te geven aan de keti's en slechts 45% zien zitten om leiding te geven aan de Tippers.
 
 Als laatst kan je ook aangeven welke groepen je totaal niet ziet zitten, deze zou je eerder richting de 0% scoren. Zo kan je het bv maar 5% zien zitten om leiding te geven aan de Sloebers of de Rakkers.
 
@@ -42,11 +42,11 @@ Hieronder volgt een voorbeeld van het programma op willekeurige data. (Nieuwe le
 
 ### Stap 2: Te veel leiding bij de Speelclub jongens
 
-Het programma detecteerde hier te veel personen. Er wordt gekeken naar de score van de volgende keuze van elke persoon. De personen met de hoogst scorende 2e keuze worden naar hun 2e keuze verplaatst. De personen die te veel score-punten zouden moeten inboeten worden behouden. Hier zie je dat Lars verplaatst wordt naar zijn 2e keuze (de tito's). Desondanks heeft deze keuze nog steeds een score van 95%. Dit terwijl Sanders slechts een score heeft van 85% voro zijn eerste keuze. Hier zie je duidelijk dat Lars het minder erg vind om zijn 2e keuze te krijgen dan Sander. Dit zorgt er voor dat we Lars vergooien van groep en Sander niet.
+Het programma detecteerde hier te veel personen. Er wordt gekeken naar de score van de volgende keuze van elke persoon. De personen met de hoogst scorende 2e keuze worden naar hun 2e keuze verplaatst. De personen die te veel score-punten zouden moeten inboeten worden behouden. Hier zie je dat Lars verplaatst wordt naar zijn 2e keuze (de Tippers). Desondanks heeft deze keuze nog steeds een score van 95%. Dit terwijl Sanders slechts een score heeft van 85% voro zijn eerste keuze. Hier zie je duidelijk dat Lars het minder erg vind om zijn 2e keuze te krijgen dan Sander. Dit zorgt er voor dat we Lars vergooien van groep en Sander niet.
 
 ![Iteratie 2](./example/Iteratie_2.png)
 
-## Te veel leiding bij de Tito's
+## Te veel leiding bij de Tippers
 
 Het programma detecteerde hier te veel personen. Er wordt opnieuw gekeken naar de volgende keuze van elke persoon die momenteel aan deze groep hangt. De personen met de beste volgende keuze worden naar hun volgende keuze verplaatst.
 
