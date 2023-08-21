@@ -62,6 +62,6 @@ Opnieuw worden de mensen met de laagste scores voor hun volgende keuze behouden 
 
 ## Te veel leiding bij de Keti's
 
-Hier zien we dat we iemand hebben gevonden die bij de Kwils wilt staan, waardoor elke groep minstens 2 leiders heeft. Deze staat is optimaal aangezien er zo min mogelijk vershuivingen zijn gebeurd sinds het begin (ideale situatie voor iedereen (iedereen zijn keuze met de hoogste score)). Elke groep die momenteel met meer dan 2 leiders staat kan nog eens kijken welke personen eventueel nog willen wisselen met andere groepen, of welke groepen meer deugd zouden hebben van een 3e persoon.
+Hier zien we dat we iemand hebben gevonden die bij de Kwiks wilt staan, waardoor elke groep minstens 2 leiders heeft. Deze staat is optimaal aangezien er zo min mogelijk vershuivingen zijn gebeurd sinds het begin (ideale situatie voor iedereen (iedereen zijn keuze met de hoogste score)). Elke groep die momenteel met meer dan 2 leiders staat kan nog eens kijken welke personen eventueel nog willen wisselen met andere groepen, of welke groepen meer deugd zouden hebben van een 3e persoon.
 
 ![Iteratie 5](./example/Iteratie_5.png)
