@@ -43,17 +43,6 @@
     { "group": "Keti's", "score": 45 },
     { "group": "Aspi's", "score": 5 }
   ],
-  "Margaux": [
-    { "group": "Sloebers", "score": 90 },
-    { "group": "Speelclub jongens", "score": 50 },
-    { "group": "Speelclub meisjes", "score": 100 },
-    { "group": "Rakkers", "score": 25 },
-    { "group": "Kwiks", "score": 55 },
-    { "group": "Tippers", "score": 5 },
-    { "group": "Toppers", "score": 65 },
-    { "group": "Keti's", "score": 60 },
-    { "group": "Aspi's", "score": 90 }
-  ],
   "Mouton": [
     { "group": "Sloebers", "score": 35 },
     { "group": "Speelclub jongens", "score": 25 },
