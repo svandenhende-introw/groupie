@@ -99,6 +99,8 @@ const getFavouriteGroup = (props: {
       ? 0
       : indexOfAfterGroup + 1;
 
+  // If next group has a score of 0, go back to the start
+  if (sortedScores[sliceIdx].score === 0) return sortedScores[0];
   return sortedScores.slice(sliceIdx, undefined)[0];
 };
 
