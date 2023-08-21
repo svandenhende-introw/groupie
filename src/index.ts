@@ -120,7 +120,7 @@ const renderData = () => {
 
   for (const [leiding, scores] of data) {
     console.log(`\n${leiding}`);
-    for (const score of scores.sort(sortScoresFn)) {
+    for (const score of scores.filter((s) => s.score > 0).sort(sortScoresFn)) {
       console.log(
         `  -> ${score.score
           .toString()
@@ -182,12 +182,7 @@ const renderResult = () => {
         .get(leidingMember)!
         .find((l) => l.group === group)!.score;
 
-      const sortedScores = data.get(leidingMember)!.sort((x, y) => {
-        if (x.score > y.score) return -1;
-        if (x.score < y.score) return 1;
-        return 0;
-      });
-
+      const sortedScores = data.get(leidingMember)!.sort(sortScoresFn);
       const givenScore = sortedScores.find((s) => s.group === group);
       const choiceNumber = sortedScores.indexOf(givenScore!);
 
