@@ -10,72 +10,6 @@
     { "group": "Keti's", "score": 45 },
     { "group": "Aspi's", "score": 35 }
   ],
-  "Eli": [
-    { "group": "Sloebers", "score": 45 },
-    { "group": "Speelclub jongens", "score": 35 },
-    { "group": "Speelclub meisjes", "score": 10 },
-    { "group": "Rakkers", "score": 90 },
-    { "group": "Kwiks", "score": 45 },
-    { "group": "Tippers", "score": 95 },
-    { "group": "Toppers", "score": 15 },
-    { "group": "Keti's", "score": 90 },
-    { "group": "Aspi's", "score": 25 }
-  ],
-  "Rube": [
-    { "group": "Sloebers", "score": 5 },
-    { "group": "Speelclub jongens", "score": 20 },
-    { "group": "Speelclub meisjes", "score": 15 },
-    { "group": "Rakkers", "score": 30 },
-    { "group": "Kwiks", "score": 55 },
-    { "group": "Tippers", "score": 35 },
-    { "group": "Toppers", "score": 100 },
-    { "group": "Keti's", "score": 20 },
-    { "group": "Aspi's", "score": 90 }
-  ],
-  "Renee": [
-    { "group": "Sloebers", "score": 40 },
-    { "group": "Speelclub jongens", "score": 40 },
-    { "group": "Speelclub meisjes", "score": 80 },
-    { "group": "Rakkers", "score": 60 },
-    { "group": "Kwiks", "score": 70 },
-    { "group": "Tippers", "score": 90 },
-    { "group": "Toppers", "score": 75 },
-    { "group": "Keti's", "score": 45 },
-    { "group": "Aspi's", "score": 5 }
-  ],
-  "Mouton": [
-    { "group": "Sloebers", "score": 35 },
-    { "group": "Speelclub jongens", "score": 25 },
-    { "group": "Speelclub meisjes", "score": 55 },
-    { "group": "Rakkers", "score": 40 },
-    { "group": "Kwiks", "score": 65 },
-    { "group": "Tippers", "score": 70 },
-    { "group": "Toppers", "score": 75 },
-    { "group": "Keti's", "score": 20 },
-    { "group": "Aspi's", "score": 5 }
-  ],
-  "Evi": [
-    { "group": "Sloebers", "score": 30 },
-    { "group": "Speelclub jongens", "score": 90 },
-    { "group": "Speelclub meisjes", "score": 100 },
-    { "group": "Rakkers", "score": 80 },
-    { "group": "Kwiks", "score": 5 },
-    { "group": "Tippers", "score": 35 },
-    { "group": "Toppers", "score": 85 },
-    { "group": "Keti's", "score": 80 },
-    { "group": "Aspi's", "score": 45 }
-  ],
-  "Sander": [
-    { "group": "Sloebers", "score": 70 },
-    { "group": "Speelclub jongens", "score": 85 },
-    { "group": "Speelclub meisjes", "score": 50 },
-    { "group": "Rakkers", "score": 45 },
-    { "group": "Kwiks", "score": 75 },
-    { "group": "Tippers", "score": 25 },
-    { "group": "Toppers", "score": 95 },
-    { "group": "Keti's", "score": 80 },
-    { "group": "Aspi's", "score": 40 }
-  ],
   "Boelens": [
     { "group": "Sloebers", "score": 55 },
     { "group": "Speelclub jongens", "score": 45 },
@@ -98,16 +32,49 @@
     { "group": "Keti's", "score": 35 },
     { "group": "Aspi's", "score": 100 }
   ],
-  "Verkindere": [
+  "Eli": [
     { "group": "Sloebers", "score": 45 },
     { "group": "Speelclub jongens", "score": 35 },
-    { "group": "Speelclub meisjes", "score": 70 },
-    { "group": "Rakkers", "score": 75 },
-    { "group": "Kwiks", "score": 25 },
-    { "group": "Tippers", "score": 90 },
+    { "group": "Speelclub meisjes", "score": 10 },
+    { "group": "Rakkers", "score": 90 },
+    { "group": "Kwiks", "score": 45 },
+    { "group": "Tippers", "score": 95 },
+    { "group": "Toppers", "score": 15 },
+    { "group": "Keti's", "score": 90 },
+    { "group": "Aspi's", "score": 25 }
+  ],
+  "Evi": [
+    { "group": "Sloebers", "score": 30 },
+    { "group": "Speelclub jongens", "score": 90 },
+    { "group": "Speelclub meisjes", "score": 100 },
+    { "group": "Rakkers", "score": 80 },
+    { "group": "Kwiks", "score": 5 },
+    { "group": "Tippers", "score": 35 },
+    { "group": "Toppers", "score": 85 },
+    { "group": "Keti's", "score": 80 },
+    { "group": "Aspi's", "score": 45 }
+  ],
+  "Floor": [
+    { "group": "Sloebers", "score": 45 },
+    { "group": "Speelclub jongens", "score": 90 },
+    { "group": "Speelclub meisjes", "score": 25 },
+    { "group": "Rakkers", "score": 100 },
+    { "group": "Kwiks", "score": 80 },
+    { "group": "Tippers", "score": 50 },
+    { "group": "Toppers", "score": 70 },
+    { "group": "Keti's", "score": 60 },
+    { "group": "Aspi's", "score": 85 }
+  ],
+  "Gaelle": [
+    { "group": "Sloebers", "score": 80 },
+    { "group": "Speelclub jongens", "score": 5 },
+    { "group": "Speelclub meisjes", "score": 65 },
+    { "group": "Rakkers", "score": 55 },
+    { "group": "Kwiks", "score": 45 },
+    { "group": "Tippers", "score": 35 },
     { "group": "Toppers", "score": 95 },
     { "group": "Keti's", "score": 90 },
-    { "group": "Aspi's", "score": 50 }
+    { "group": "Aspi's", "score": 35 }
   ],
   "Kyandro": [
     { "group": "Sloebers", "score": 100 },
@@ -153,6 +120,17 @@
     { "group": "Keti's", "score": 40 },
     { "group": "Aspi's", "score": 45 }
   ],
+  "Mouton": [
+    { "group": "Sloebers", "score": 35 },
+    { "group": "Speelclub jongens", "score": 25 },
+    { "group": "Speelclub meisjes", "score": 55 },
+    { "group": "Rakkers", "score": 40 },
+    { "group": "Kwiks", "score": 65 },
+    { "group": "Tippers", "score": 70 },
+    { "group": "Toppers", "score": 75 },
+    { "group": "Keti's", "score": 20 },
+    { "group": "Aspi's", "score": 5 }
+  ],
   "Robbe": [
     { "group": "Sloebers", "score": 35 },
     { "group": "Speelclub jongens", "score": 55 },
@@ -164,6 +142,50 @@
     { "group": "Keti's", "score": 100 },
     { "group": "Aspi's", "score": 90 }
   ],
+  "Renee": [
+    { "group": "Sloebers", "score": 40 },
+    { "group": "Speelclub jongens", "score": 40 },
+    { "group": "Speelclub meisjes", "score": 80 },
+    { "group": "Rakkers", "score": 60 },
+    { "group": "Kwiks", "score": 70 },
+    { "group": "Tippers", "score": 90 },
+    { "group": "Toppers", "score": 75 },
+    { "group": "Keti's", "score": 45 },
+    { "group": "Aspi's", "score": 5 }
+  ],
+  "Rube": [
+    { "group": "Sloebers", "score": 5 },
+    { "group": "Speelclub jongens", "score": 20 },
+    { "group": "Speelclub meisjes", "score": 15 },
+    { "group": "Rakkers", "score": 30 },
+    { "group": "Kwiks", "score": 55 },
+    { "group": "Tippers", "score": 35 },
+    { "group": "Toppers", "score": 100 },
+    { "group": "Keti's", "score": 20 },
+    { "group": "Aspi's", "score": 90 }
+  ],
+  "Sander": [
+    { "group": "Sloebers", "score": 70 },
+    { "group": "Speelclub jongens", "score": 85 },
+    { "group": "Speelclub meisjes", "score": 50 },
+    { "group": "Rakkers", "score": 45 },
+    { "group": "Kwiks", "score": 75 },
+    { "group": "Tippers", "score": 25 },
+    { "group": "Toppers", "score": 95 },
+    { "group": "Keti's", "score": 80 },
+    { "group": "Aspi's", "score": 40 }
+  ],
+  "Verkindere": [
+    { "group": "Sloebers", "score": 45 },
+    { "group": "Speelclub jongens", "score": 35 },
+    { "group": "Speelclub meisjes", "score": 70 },
+    { "group": "Rakkers", "score": 75 },
+    { "group": "Kwiks", "score": 25 },
+    { "group": "Tippers", "score": 90 },
+    { "group": "Toppers", "score": 95 },
+    { "group": "Keti's", "score": 90 },
+    { "group": "Aspi's", "score": 50 }
+  ],
   "Yoran": [
     { "group": "Sloebers", "score": 25 },
     { "group": "Speelclub jongens", "score": 95 },
@@ -174,27 +196,5 @@
     { "group": "Toppers", "score": 65 },
     { "group": "Keti's", "score": 40 },
     { "group": "Aspi's", "score": 50 }
-  ],
-  "Floor": [
-    { "group": "Sloebers", "score": 45 },
-    { "group": "Speelclub jongens", "score": 90 },
-    { "group": "Speelclub meisjes", "score": 25 },
-    { "group": "Rakkers", "score": 100 },
-    { "group": "Kwiks", "score": 80 },
-    { "group": "Tippers", "score": 50 },
-    { "group": "Toppers", "score": 70 },
-    { "group": "Keti's", "score": 60 },
-    { "group": "Aspi's", "score": 85 }
-  ],
-  "Gaelle": [
-    { "group": "Sloebers", "score": 80 },
-    { "group": "Speelclub jongens", "score": 5 },
-    { "group": "Speelclub meisjes", "score": 65 },
-    { "group": "Rakkers", "score": 55 },
-    { "group": "Kwiks", "score": 45 },
-    { "group": "Tippers", "score": 35 },
-    { "group": "Toppers", "score": 95 },
-    { "group": "Keti's", "score": 90 },
-    { "group": "Aspi's", "score": 35 }
   ]
 }
