@@ -77,6 +77,8 @@ for (const group of Object.values(groups.Values)) {
   result.set(group, []);
 }
 
+const amountOfGroups = Object.values(groups.Values).length;
+
 const sortScoresFn = (x: ScorePerGroup, y: ScorePerGroup) => {
   if (x.score > y.score) return -1;
   if (x.score < y.score) return 1;
@@ -149,7 +151,15 @@ const renderResult = () => {
     console.log(`\n${group}`);
 
     if (movedFromGroup === group) {
-      drawRect(ctx, "lightgreen", (1920 / 8) * i, 0, 1920 / 8, 540, 0);
+      drawRect(
+        ctx,
+        "lightgreen",
+        (1920 / amountOfGroups) * i,
+        0,
+        1920 / amountOfGroups,
+        540,
+        0
+      );
     }
 
     if (!leiding.length) console.log("  -> Niemand");
@@ -187,9 +197,9 @@ const renderResult = () => {
         drawRect(
           ctx,
           "lightcoral",
-          (1920 / 8) * i,
+          (1920 / amountOfGroups) * i,
           140 + j * 64 - 24,
-          1920 / 8,
+          1920 / amountOfGroups,
           16 + 24 + 24,
           0
         );
@@ -199,7 +209,7 @@ const renderResult = () => {
         ctx,
         `${leidingMember}`,
         16,
-        (1920 / 8) * i + 32,
+        (1920 / amountOfGroups) * i + 16,
         140 + j * 64,
         "start"
       );
@@ -208,7 +218,7 @@ const renderResult = () => {
         ctx,
         ` -> (score: ${groupScore}, keuze: ${choiceNumber + 1})`,
         16,
-        (1920 / 8) * i + 32,
+        (1920 / amountOfGroups) * i + 16,
         140 + (j + 1) * 64 - 42,
         "start"
       );
@@ -216,8 +226,20 @@ const renderResult = () => {
       j++;
     }
 
-    drawLine(ctx, (1920 / 8) * i, 0, (1920 / 8) * i, 540);
-    drawText(ctx, group, 20, (1920 / 8) * i + 1920 / 8 / 2, 48);
+    drawLine(
+      ctx,
+      (1920 / amountOfGroups) * i,
+      0,
+      (1920 / amountOfGroups) * i,
+      540
+    );
+    drawText(
+      ctx,
+      group,
+      20,
+      (1920 / amountOfGroups) * i + 1920 / amountOfGroups / 2,
+      48
+    );
     drawLine(ctx, 0, 88, 1920, 88);
     i++;
   }
