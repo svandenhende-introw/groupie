@@ -89,7 +89,11 @@ const getFavouriteGroup = (props: {
   scores: ScorePerGroup[];
   after: Group | null;
 }): ScorePerGroup => {
-  const sortedScores = props.scores.sort(sortScoresFn);
+  // Only include scores > 0
+  const sortedScores = props.scores
+    .filter((s) => s.score > 0)
+    .sort(sortScoresFn);
+
   const indexOfAfterGroup = sortedScores.findIndex(
     (s) => s.group === props.after
   );
@@ -99,8 +103,6 @@ const getFavouriteGroup = (props: {
       ? 0
       : indexOfAfterGroup + 1;
 
-  // If next group has a score of 0, go back to the start
-  if (sortedScores[sliceIdx].score === 0) return sortedScores[0];
   return sortedScores.slice(sliceIdx, undefined)[0];
 };
 
