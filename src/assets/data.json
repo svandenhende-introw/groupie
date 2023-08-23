@@ -1,14 +1,14 @@
 {
   "Amber": [
-    { "group": "Sloebers", "score": 0 },
+    { "group": "Sloebers", "score": 40 },
     { "group": "Speelclub jongens", "score": 0 },
     { "group": "Speelclub meisjes", "score": 0 },
     { "group": "Rakkers", "score": 0 },
     { "group": "Kwiks", "score": 0 },
     { "group": "Tippers", "score": 0 },
     { "group": "Toppers", "score": 0 },
-    { "group": "Keti's", "score": 0 },
-    { "group": "Aspi's", "score": 0 }
+    { "group": "Keti's", "score": 6 },
+    { "group": "Aspi's", "score": 100 }
   ],
   "Boelens": [
     { "group": "Sloebers", "score": 0 },
@@ -17,18 +17,18 @@
     { "group": "Rakkers", "score": 0 },
     { "group": "Kwiks", "score": 0 },
     { "group": "Tippers", "score": 0 },
-    { "group": "Toppers", "score": 0 },
-    { "group": "Keti's", "score": 0 },
-    { "group": "Aspi's", "score": 0 }
+    { "group": "Toppers", "score": 1 },
+    { "group": "Keti's", "score": 100 },
+    { "group": "Aspi's", "score": 2 }
   ],
   "Denzel": [
     { "group": "Sloebers", "score": 0 },
-    { "group": "Speelclub jongens", "score": 0 },
+    { "group": "Speelclub jongens", "score": 20 },
     { "group": "Speelclub meisjes", "score": 0 },
-    { "group": "Rakkers", "score": 0 },
+    { "group": "Rakkers", "score": 30 },
     { "group": "Kwiks", "score": 0 },
     { "group": "Tippers", "score": 0 },
-    { "group": "Toppers", "score": 0 },
+    { "group": "Toppers", "score": 100 },
     { "group": "Keti's", "score": 0 },
     { "group": "Aspi's", "score": 0 }
   ],
@@ -39,20 +39,20 @@
     { "group": "Rakkers", "score": 0 },
     { "group": "Kwiks", "score": 0 },
     { "group": "Tippers", "score": 0 },
-    { "group": "Toppers", "score": 0 },
-    { "group": "Keti's", "score": 0 },
-    { "group": "Aspi's", "score": 0 }
+    { "group": "Toppers", "score": 1 },
+    { "group": "Keti's", "score": 99 },
+    { "group": "Aspi's", "score": 100 }
   ],
   "Evi": [
     { "group": "Sloebers", "score": 0 },
     { "group": "Speelclub jongens", "score": 0 },
     { "group": "Speelclub meisjes", "score": 0 },
-    { "group": "Rakkers", "score": 0 },
+    { "group": "Rakkers", "score": 1 },
     { "group": "Kwiks", "score": 0 },
     { "group": "Tippers", "score": 0 },
     { "group": "Toppers", "score": 0 },
-    { "group": "Keti's", "score": 0 },
-    { "group": "Aspi's", "score": 0 }
+    { "group": "Keti's", "score": 10 },
+    { "group": "Aspi's", "score": 100 }
   ],
   "Floor": [
     { "group": "Sloebers", "score": 0 },
@@ -60,9 +60,9 @@
     { "group": "Speelclub meisjes", "score": 0 },
     { "group": "Rakkers", "score": 0 },
     { "group": "Kwiks", "score": 0 },
-    { "group": "Tippers", "score": 0 },
-    { "group": "Toppers", "score": 0 },
-    { "group": "Keti's", "score": 0 },
+    { "group": "Tippers", "score": 100 },
+    { "group": "Toppers", "score": 75 },
+    { "group": "Keti's", "score": 50 },
     { "group": "Aspi's", "score": 0 }
   ],
   "Gaelle": [
@@ -71,26 +71,26 @@
     { "group": "Speelclub meisjes", "score": 0 },
     { "group": "Rakkers", "score": 0 },
     { "group": "Kwiks", "score": 0 },
-    { "group": "Tippers", "score": 0 },
-    { "group": "Toppers", "score": 0 },
-    { "group": "Keti's", "score": 0 },
+    { "group": "Tippers", "score": 100 },
+    { "group": "Toppers", "score": 50 },
+    { "group": "Keti's", "score": 30 },
     { "group": "Aspi's", "score": 0 }
   ],
   "Kyandro": [
     { "group": "Sloebers", "score": 0 },
     { "group": "Speelclub jongens", "score": 0 },
-    { "group": "Speelclub meisjes", "score": 0 },
-    { "group": "Rakkers", "score": 0 },
-    { "group": "Kwiks", "score": 0 },
+    { "group": "Speelclub meisjes", "score": 88 },
+    { "group": "Rakkers", "score": 70 },
+    { "group": "Kwiks", "score": 95 },
     { "group": "Tippers", "score": 0 },
     { "group": "Toppers", "score": 0 },
     { "group": "Keti's", "score": 0 },
     { "group": "Aspi's", "score": 0 }
   ],
   "Lars": [
-    { "group": "Sloebers", "score": 0 },
-    { "group": "Speelclub jongens", "score": 0 },
-    { "group": "Speelclub meisjes", "score": 0 },
+    { "group": "Sloebers", "score": 84 },
+    { "group": "Speelclub jongens", "score": 86 },
+    { "group": "Speelclub meisjes", "score": 85 },
     { "group": "Rakkers", "score": 0 },
     { "group": "Kwiks", "score": 0 },
     { "group": "Tippers", "score": 0 },
@@ -100,11 +100,11 @@
   ],
   "Mathijs": [
     { "group": "Sloebers", "score": 0 },
-    { "group": "Speelclub jongens", "score": 0 },
+    { "group": "Speelclub jongens", "score": 50 },
     { "group": "Speelclub meisjes", "score": 0 },
     { "group": "Rakkers", "score": 0 },
-    { "group": "Kwiks", "score": 0 },
-    { "group": "Tippers", "score": 0 },
+    { "group": "Kwiks", "score": 30 },
+    { "group": "Tippers", "score": 20 },
     { "group": "Toppers", "score": 0 },
     { "group": "Keti's", "score": 0 },
     { "group": "Aspi's", "score": 0 }
@@ -112,9 +112,9 @@
   "Maxime": [
     { "group": "Sloebers", "score": 0 },
     { "group": "Speelclub jongens", "score": 0 },
-    { "group": "Speelclub meisjes", "score": 0 },
-    { "group": "Rakkers", "score": 0 },
-    { "group": "Kwiks", "score": 0 },
+    { "group": "Speelclub meisjes", "score": 80 },
+    { "group": "Rakkers", "score": 81 },
+    { "group": "Kwiks", "score": 65 },
     { "group": "Tippers", "score": 0 },
     { "group": "Toppers", "score": 0 },
     { "group": "Keti's", "score": 0 },
@@ -125,9 +125,9 @@
     { "group": "Speelclub jongens", "score": 0 },
     { "group": "Speelclub meisjes", "score": 0 },
     { "group": "Rakkers", "score": 0 },
-    { "group": "Kwiks", "score": 0 },
-    { "group": "Tippers", "score": 0 },
-    { "group": "Toppers", "score": 0 },
+    { "group": "Kwiks", "score": 70 },
+    { "group": "Tippers", "score": 80 },
+    { "group": "Toppers", "score": 90 },
     { "group": "Keti's", "score": 0 },
     { "group": "Aspi's", "score": 0 }
   ],
@@ -138,9 +138,9 @@
     { "group": "Rakkers", "score": 0 },
     { "group": "Kwiks", "score": 0 },
     { "group": "Tippers", "score": 0 },
-    { "group": "Toppers", "score": 0 },
-    { "group": "Keti's", "score": 0 },
-    { "group": "Aspi's", "score": 0 }
+    { "group": "Toppers", "score": 1 },
+    { "group": "Keti's", "score": 100 },
+    { "group": "Aspi's", "score": 20 }
   ],
   "Renee": [
     { "group": "Sloebers", "score": 0 },
@@ -148,10 +148,10 @@
     { "group": "Speelclub meisjes", "score": 0 },
     { "group": "Rakkers", "score": 0 },
     { "group": "Kwiks", "score": 0 },
-    { "group": "Tippers", "score": 0 },
+    { "group": "Tippers", "score": 1 },
     { "group": "Toppers", "score": 0 },
-    { "group": "Keti's", "score": 0 },
-    { "group": "Aspi's", "score": 0 }
+    { "group": "Keti's", "score": 50 },
+    { "group": "Aspi's", "score": 100 }
   ],
   "Rube": [
     { "group": "Sloebers", "score": 0 },
@@ -160,16 +160,16 @@
     { "group": "Rakkers", "score": 0 },
     { "group": "Kwiks", "score": 0 },
     { "group": "Tippers", "score": 0 },
-    { "group": "Toppers", "score": 0 },
-    { "group": "Keti's", "score": 0 },
-    { "group": "Aspi's", "score": 0 }
+    { "group": "Toppers", "score": 1 },
+    { "group": "Keti's", "score": 99 },
+    { "group": "Aspi's", "score": 100 }
   ],
   "Sander": [
-    { "group": "Sloebers", "score": 0 },
+    { "group": "Sloebers", "score": 100 },
     { "group": "Speelclub jongens", "score": 0 },
     { "group": "Speelclub meisjes", "score": 0 },
-    { "group": "Rakkers", "score": 0 },
-    { "group": "Kwiks", "score": 0 },
+    { "group": "Rakkers", "score": 80 },
+    { "group": "Kwiks", "score": 33 },
     { "group": "Tippers", "score": 0 },
     { "group": "Toppers", "score": 0 },
     { "group": "Keti's", "score": 0 },
@@ -177,10 +177,10 @@
   ],
   "Verkindere": [
     { "group": "Sloebers", "score": 0 },
-    { "group": "Speelclub jongens", "score": 0 },
+    { "group": "Speelclub jongens", "score": 90 },
     { "group": "Speelclub meisjes", "score": 0 },
-    { "group": "Rakkers", "score": 0 },
-    { "group": "Kwiks", "score": 0 },
+    { "group": "Rakkers", "score": 100 },
+    { "group": "Kwiks", "score": 70 },
     { "group": "Tippers", "score": 0 },
     { "group": "Toppers", "score": 0 },
     { "group": "Keti's", "score": 0 },
@@ -188,12 +188,12 @@
   ],
   "Yoran": [
     { "group": "Sloebers", "score": 0 },
-    { "group": "Speelclub jongens", "score": 0 },
+    { "group": "Speelclub jongens", "score": 45 },
     { "group": "Speelclub meisjes", "score": 0 },
     { "group": "Rakkers", "score": 0 },
     { "group": "Kwiks", "score": 0 },
-    { "group": "Tippers", "score": 0 },
-    { "group": "Toppers", "score": 0 },
+    { "group": "Tippers", "score": 90 },
+    { "group": "Toppers", "score": 100 },
     { "group": "Keti's", "score": 0 },
     { "group": "Aspi's", "score": 0 }
   ]
