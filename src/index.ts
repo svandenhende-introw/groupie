@@ -9,6 +9,9 @@ import {
   drawTextWithBackground,
 } from "./drawing";
 
+// Lars:: Sloebers 3e keuze, even veel score als speelclub meisjes 2e keuze -> verlaagd naar 84
+// Maxime:: Rakkers 1e keuze, even veel score als speelclub meisjes 2e keuze -> Rakkers verhoogd naar 81
+
 const IDEAL_LEIDING_PER_GROUP = 2;
 const MAX_ITERATIONS = 100;
 let c = 0;
@@ -98,11 +101,7 @@ const getFavouriteGroup = (props: {
     (s) => s.group === props.after
   );
 
-  const sliceIdx =
-    indexOfAfterGroup + 1 === sortedScores.length - 1
-      ? 0
-      : indexOfAfterGroup + 1;
-
+  const sliceIdx = (indexOfAfterGroup + 1) % 3;
   return sortedScores.slice(sliceIdx, undefined)[0];
 };
 
@@ -130,8 +129,7 @@ const renderData = () => {
   }
 };
 
-let mostAmountOfLeiding: number = -1;
-let groupWithMostLeiding: Group | null = null;
+let groupsWithTooMuchLeiding: Group[] = [];
 
 const renderResult = () => {
   console.log(
@@ -148,8 +146,7 @@ const renderResult = () => {
   let hasIncompleteGroup = false;
   let i = 0;
 
-  mostAmountOfLeiding = -1;
-  groupWithMostLeiding = null;
+  groupsWithTooMuchLeiding = [];
 
   for (const [group, leiding] of result) {
     console.log(`\n${group}`);
@@ -168,12 +165,8 @@ const renderResult = () => {
 
     if (!leiding.length) console.log("  -> Niemand");
     if (leiding.length < IDEAL_LEIDING_PER_GROUP) hasIncompleteGroup = true;
-    if (
-      leiding.length > IDEAL_LEIDING_PER_GROUP &&
-      leiding.length > mostAmountOfLeiding
-    ) {
-      mostAmountOfLeiding = leiding.length;
-      groupWithMostLeiding = group;
+    if (leiding.length > IDEAL_LEIDING_PER_GROUP) {
+      groupsWithTooMuchLeiding.push(group);
     }
 
     let j = 0;
@@ -282,10 +275,13 @@ const improve = (): undefined => {
   c += 1;
   if (c >= MAX_ITERATIONS) return;
 
-  if (groupWithMostLeiding) {
-    // Get group with too many leiding
-    const group = groupWithMostLeiding;
-    const leiding = result.get(groupWithMostLeiding)!;
+  if (groupsWithTooMuchLeiding) {
+    // Get group with too many leiding (randomly, otherwise infinite loop 🙃)
+    const group =
+      groupsWithTooMuchLeiding[
+        Math.floor(Math.random() * groupsWithTooMuchLeiding.length)
+      ];
+    const leiding = result.get(group)!;
 
     // too many people want this group => Move some
     console.log(
@@ -294,7 +290,7 @@ const improve = (): undefined => {
     movedFromGroup = group;
 
     // decide who to move based on their next choice
-    const leidingSortedBasedOnNextChoice = leiding.sort((x, y) => {
+    const leidingSortedToMove = leiding.sort((x, y) => {
       const xScoreForNextGroup = getFavouriteGroup({
         scores: data.get(x)!,
         after: group,
@@ -310,26 +306,21 @@ const improve = (): undefined => {
     });
 
     // move those with the highest next choice
-    leidingSortedBasedOnNextChoice
-      .slice(0, -IDEAL_LEIDING_PER_GROUP)
-      .forEach((l) => {
-        const nextGroup = getFavouriteGroup({
-          scores: data.get(l)!,
-          after: group,
-        });
-        movedLeiding.push(l);
-        console.log(
-          ` > ${l} wordt verhuisd naar de volgende keuze ${nextGroup.group} met score ${nextGroup.score}`
-        );
-
-        result.set(nextGroup.group, result.get(nextGroup.group)!.concat(l));
+    leidingSortedToMove.slice(0, -IDEAL_LEIDING_PER_GROUP).forEach((l) => {
+      const nextGroup = getFavouriteGroup({
+        scores: data.get(l)!,
+        after: group,
       });
+      movedLeiding.push(l);
+      console.log(
+        ` > ${l} wordt verhuisd naar de volgende keuze ${nextGroup.group} met score ${nextGroup.score}`
+      );
+
+      result.set(nextGroup.group, result.get(nextGroup.group)!.concat(l));
+    });
 
     // keep n with lowest next choice
-    result.set(
-      group,
-      leidingSortedBasedOnNextChoice.slice(-IDEAL_LEIDING_PER_GROUP)
-    );
+    result.set(group, leidingSortedToMove.slice(-IDEAL_LEIDING_PER_GROUP));
 
     // check if further improvement is required
     return improve();
