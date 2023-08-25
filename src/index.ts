@@ -42,7 +42,6 @@ const people = z.enum([
   "Gaelle",
   "Kyandro",
   "Lars",
-  "Margaux",
   "Mathijs",
   "Maxime",
   "Robbe",
@@ -105,6 +104,21 @@ const getFavouriteGroup = (props: {
   return sortedScores.slice(sliceIdx, undefined)[0];
 };
 
+const getScoreForGroup = (props: {
+  scores: ScorePerGroup[];
+  group: Group;
+}): ScorePerGroup => {
+  return props.scores.find((s) => s.group === props.group)!;
+};
+
+const findGroupOfLeiding = (l: Leiding): Group | null => {
+  for (const [group, leiding] of result) {
+    if (leiding.indexOf(l) >= 0) return group;
+  }
+
+  return null;
+};
+
 const assignFavourites = () => {
   for (const [leiding, scores] of data) {
     const favo = getFavouriteGroup({ scores, after: null });
@@ -129,6 +143,8 @@ const renderData = () => {
   }
 };
 
+const allLeiding = Object.values(people.Values);
+let groupsWithTooLittleLeiding: Group[] = [];
 let groupsWithTooMuchLeiding: Group[] = [];
 
 const renderResult = () => {
@@ -146,12 +162,13 @@ const renderResult = () => {
   let hasIncompleteGroup = false;
   let i = 0;
 
+  groupsWithTooLittleLeiding = [];
   groupsWithTooMuchLeiding = [];
 
   for (const [group, leiding] of result) {
     console.log(`\n${group}`);
 
-    if (movedFromGroup === group) {
+    if (movedGroups.includes(group)) {
       drawRect(
         ctx,
         "lightgreen",
@@ -164,7 +181,10 @@ const renderResult = () => {
     }
 
     if (!leiding.length) console.log("  -> Niemand");
-    if (leiding.length < IDEAL_LEIDING_PER_GROUP) hasIncompleteGroup = true;
+    if (leiding.length < IDEAL_LEIDING_PER_GROUP) {
+      hasIncompleteGroup = true;
+      groupsWithTooLittleLeiding.push(group);
+    }
     if (leiding.length > IDEAL_LEIDING_PER_GROUP) {
       groupsWithTooMuchLeiding.push(group);
     }
@@ -263,13 +283,14 @@ const renderResult = () => {
 };
 
 let movedLeiding: Leiding[] = [];
-let movedFromGroup = "";
+let movedGroups: Group[] = [];
 
-const improve = (): undefined => {
+const improveGroupsWithTooMuchLeiding = (): undefined => {
   // Render intermediate result
   renderResult();
 
   movedLeiding = [];
+  movedGroups = [];
 
   // Ensure overflow is caught
   c += 1;
@@ -287,7 +308,7 @@ const improve = (): undefined => {
     console.log(
       `\nTe veel mensen willen leiding geven aan de ${group} (${leiding.length})`
     );
-    movedFromGroup = group;
+    movedGroups.push(group);
 
     // decide who to move based on their next choice
     const leidingSortedToMove = leiding.sort((x, y) => {
@@ -322,8 +343,77 @@ const improve = (): undefined => {
     // keep n with lowest next choice
     result.set(group, leidingSortedToMove.slice(-IDEAL_LEIDING_PER_GROUP));
 
-    // check if further improvement is required
-    return improve();
+    // now improve groups that are too small
+    return improveGroupsWithTooLittleLeiding();
+  }
+
+  console.log("Optimale oplossing gevonden 🎉");
+  return;
+};
+
+const improveGroupsWithTooLittleLeiding = (): undefined => {
+  // Render intermediate result
+  renderResult();
+  movedLeiding = [];
+  movedGroups = [];
+
+  // Ensure overflow is caught
+  c += 1;
+  if (c >= MAX_ITERATIONS) return;
+
+  if (groupsWithTooLittleLeiding) {
+    // Get group with too many leiding (randomly, otherwise infinite loop 🙃)
+    const group =
+      groupsWithTooLittleLeiding[
+        Math.floor(Math.random() * groupsWithTooLittleLeiding.length)
+      ];
+    const leidingOfGroup = result.get(group)!;
+
+    // too little people want this group => Move some from the other groups
+    console.log(
+      `\nTe weinig mensen willen leiding geven aan de ${group} (${leidingOfGroup.length})`
+    );
+
+    // decide who to move based on their next choice
+    const leidingSortedToMove = allLeiding
+      // filter out leiding that is already in this group
+      .filter((l) => leidingOfGroup.indexOf(l) === -1)
+      .sort((x, y) => {
+        const xScoreForThisGroup = getScoreForGroup({
+          scores: data.get(x)!,
+          group: group,
+        }).score;
+        const yScoreForThisGroup = getScoreForGroup({
+          scores: data.get(y)!,
+          group: group,
+        }).score;
+
+        if (xScoreForThisGroup > yScoreForThisGroup) return -1;
+        if (xScoreForThisGroup < yScoreForThisGroup) return 1;
+        return 0;
+      });
+
+    for (let i = 0; i < IDEAL_LEIDING_PER_GROUP - leidingOfGroup.length; i++) {
+      const l = leidingSortedToMove[i];
+      movedLeiding.push(l);
+
+      // remove them from their current group
+      const oldGroup = findGroupOfLeiding(l)!;
+      movedGroups.push(oldGroup);
+
+      const leidingOfOldGroup = [...result.get(oldGroup)!];
+      leidingOfOldGroup.splice(leidingOfOldGroup.indexOf(l), 1);
+
+      // remove this person from their old group
+      result.set(oldGroup, leidingOfOldGroup);
+      // add this person to the current group
+      result.set(group, result.get(group)!.concat(l));
+
+      console.log(` > ${l} wordt verhuisd van ${oldGroup} naar ${group}`);
+    }
+
+    // now improve groups that are too big
+    return improveGroupsWithTooMuchLeiding();
   }
 
   console.log("Optimale oplossing gevonden 🎉");
@@ -337,4 +427,5 @@ renderData();
 assignFavourites();
 
 // Start optimizing
-improve();
+improveGroupsWithTooLittleLeiding();
+// improveGroupsWithTooMuchLeiding();
